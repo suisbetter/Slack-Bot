@@ -2,7 +2,7 @@
 
 Hey! This is my first Slack bot project, built using Node.js.
 
-I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps, and as my first Hack Clun project.
+I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps, and as my first Hack Club project.
 
 ## What it does
 
