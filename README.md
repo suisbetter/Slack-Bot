@@ -1,8 +1,8 @@
 # My First Slack Bot
 
-Hey! This is my first Slack bot project, built using Node.js and the `@slack/bolt` framework with Socket Mode.
+Hey! This is my first Slack bot project, built using Node.js.
 
-I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps.
+I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps, and as my first Hack Clun project.
 
 ## What it does
 
@@ -15,7 +15,7 @@ The bot listens for a few custom slash commands:
 
 ## How to run it
 
-1. Install dependencies:
+1. Install node.js:
    ```bash
    npm install
    ```
@@ -35,4 +35,4 @@ You will see `bot is running!` in your terminal once it successfully connects.
 
 ## How it works
 
-The bot uses Slack's Bolt SDK configured in Socket Mode, which means Slack pushes events directly over a WebSocket connection without needing a public IP or ngrok tunnel. When a slash command triggers, the bot acknowledges the request (`ack()`), calls the corresponding API using `axios`, and replies back to the channel with `respond()`.
+The bot uses Slack's Bolt SDK configured in Socket Mode, which means Slack pushes events directly over a WebSocket connection without needing a public IP. When a slash command triggers, the bot acknowledges the request (`ack()`), calls the corresponding API using `axios`, and replies back to the channel with `respond()`.
