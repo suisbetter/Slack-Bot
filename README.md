@@ -1,79 +1,38 @@
-# Slack-Bot
+# My First Slack Bot
 
-A simple Slack bot built with Node.js and [Slack Bolt](https://slack.dev/bolt-js/) that responds to slash commands with cat facts, jokes, and a ping/latency check.
+Hey! This is my first Slack bot project, built using Node.js and the `@slack/bolt` framework with Socket Mode.
 
-This is my first project — I'm still learning the ropes of building and deploying things, so bear with me.
+I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps.
 
-## Features
+## What it does
 
-- **Cat facts** — fetches a random fact from the [Cat Facts API](https://catfact.ninja/)
-- **Jokes** — fetches a random joke from the [Official Joke API](https://official-joke-api.appspot.com/)
-- **Ping** — replies with the bot's response latency
-- **Help** — lists available commands
-- Runs in [Socket Mode](https://api.slack.com/apis/socket-mode), so no public URL or web server is required
+The bot listens for a few custom slash commands:
 
-## Slash Commands
+- `/bot_name-catfact` - Fetches and sends a random cat fact from the Cat Facts API.
+- `/bot_name-joke` - Sends a random joke (setup and punchline) from the Official Joke API.
+- `/slk` - Pings the bot and calculates response latency in milliseconds.
+- `/bot_name-help` - Shows a quick summary of the commands.
 
-| Command | Description |
-| --- | --- |
-| `/bot_name-catfact` | Get a random cat fact |
-| `/bot_name-joke` | Get a random joke (setup + punchline) |
-| `/bot_name-help` | List available commands |
-| `/slk` | Ping the bot and see its response latency |
+## How to run it
 
-## Tech Stack
-
-- [Node.js](https://nodejs.org/)
-- [@slack/bolt](https://www.npmjs.com/package/@slack/bolt) — Slack app framework
-- [axios](https://www.npmjs.com/package/axios) — HTTP requests to external APIs
-- [dotenv](https://www.npmjs.com/package/dotenv) — environment variable management
-
-## Prerequisites
-
-- Node.js installed locally
-- A Slack workspace where you can install and configure apps
-- A Slack app with:
-  - **Socket Mode** enabled
-  - An **App-Level Token** (starts with `xapp-`) with the `connections:write` scope
-  - A **Bot Token** (starts with `xoxb-`) with permission to respond to slash commands
-  - The slash commands above registered under **Slash Commands** in your app configuration
-
-## Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/suisbetter/Slack-Bot.git
-   cd Slack-Bot
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Create a `.env` file in the project root with your Slack app credentials:
+2. Create a `.env` file with your Slack app tokens:
    ```env
-   SLACK_BOT_TOKEN=xoxb-your-bot-token
-   SLACK_APP_TOKEN=xapp-your-app-token
+   SLACK_BOT_TOKEN=xoxb-...
+   SLACK_APP_TOKEN=xapp-...
    ```
 
-4. Start the bot:
+3. Start the bot:
    ```bash
    node index.js
    ```
 
-   You should see `bot is running!` in your terminal once it connects successfully.
+You will see `bot is running!` in your terminal once it successfully connects.
 
-## Project Structure
+## How it works
 
-```
-Slack-Bot/
-├── index.js           # Bot logic and slash command handlers
-├── package.json        # Project metadata and dependencies
-├── .gitignore           # Excludes node_modules and .env
-└── README.md
-```
-
-## License
-
-ISC
+The bot uses Slack's Bolt SDK configured in Socket Mode, which means Slack pushes events directly over a WebSocket connection without needing a public IP or ngrok tunnel. When a slash command triggers, the bot acknowledges the request (`ack()`), calls the corresponding API using `axios`, and replies back to the channel with `respond()`.
