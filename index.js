@@ -41,17 +41,22 @@ app.command("/bot_name-help", async ({ ack, respond }) => {
   await respond({
     text:
 `Available Commands:
-/bot_name-ping - Check bot latency
-/bot_name-catfact - Get a cat fact`
+/bot_name-ping (or /slk) - Check bot latency
+/bot_name-catfact - Get a cat fact
+/bot_name-joke - Get a random joke
+/bot_name-help - List available commands`
   });
 });
 
-app.command("/slk", async ({ command, ack, respond }) => {
+const handlePing = async ({ ack, respond }) => {
   const start = Date.now();
   await ack();
   const latency = Date.now() - start;
   await respond({ text: `Pong!\nLatency: ${latency}ms` });
-});
+};
+
+app.command("/slk", handlePing);
+app.command("/bot_name-ping", handlePing);
 
 (async () => {
   await app.start();
