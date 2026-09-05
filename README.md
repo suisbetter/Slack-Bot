@@ -1,7 +1,5 @@
 # My First Slack Bot
 
-![bot answering a command](assets/banner.png)
-
 A Slack bot I made while learning Node.js, and my first Hack Club project. Before this I'd only followed tutorials, so this is the first thing I got genuinely working in a real workspace.
 
 ## What it does
