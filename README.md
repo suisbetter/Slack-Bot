@@ -15,7 +15,7 @@ The bot listens for a few slash commands in any channel where it's been added:
 
 ## Try it
 
-The bot is running 24/7 in the Hack Club workspace. Open the **#bot-spam** channel (it's public) and type any of the commands above, for example `/slk-catfact`.
+The bot is running 24/7 in the Hack Club workspace. Open the demo channel [#bot-spam](https://hackclub.slack.com/archives/C0P5NE354) and type any of the commands above, for example `/slk-catfact`.
 
 ## How to run it yourself
 
