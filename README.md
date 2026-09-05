@@ -1,38 +1,37 @@
 # My First Slack Bot
 
-Hey! This is my first Slack bot project, built using Node.js.
+<!--
+TODO: project banner here. Replace the line below with a screenshot of your bot running in Slack, e.g.
+![bot answering a command](assets/banner.png)
+-->
 
-I built this bot for my Slack workspace to learn how slash commands work and how to integrate external APIs into chat apps, and as my first Hack Club project.
+A Slack bot I made while learning Node.js, and my first Hack Club project. Before this I'd only followed tutorials, so this is the first thing I got genuinely working in a real workspace.
 
 ## What it does
 
-The bot listens for a few custom slash commands:
+The bot listens for a few slash commands in any channel where it's been added:
 
-- `/bot_name-catfact` - Fetches and sends a random cat fact from the Cat Facts API.
-- `/bot_name-joke` - Sends a random joke (setup and punchline) from the Official Joke API.
-- `/slk` - Pings the bot and calculates response latency in milliseconds.
-- `/bot_name-help` - Shows a quick summary of the commands.
+- `/slk-catfact` – replies with a random cat fact (no setup, straight to the point)
+- `/slk-joke` – replies with a joke, setup first and the punchline on the next line
+- `/slk-ping` or `/slk` – tells you the bot is alive and how fast it answered in ms
+- `/slk-help` – lists all of the above so nobody has to remember them
 
-## How to run it
+## Try it
 
-1. Install node.js:
-   ```bash
-   npm install
-   ```
+The bot is running 24/7 in my workspace. If you're in it, just type one of the commands above in the demo channel.
 
-2. Create a `.env` file with your Slack app tokens:
-   ```env
-   SLACK_BOT_TOKEN=xoxb-...
-   SLACK_APP_TOKEN=xapp-...
-   ```
+## How to run it yourself
 
-3. Start the bot:
-   ```bash
-   node index.js
-   ```
+You'll need Node.js and a Slack app with Socket Mode enabled. Grab a Bot token and an App token from the Slack API dashboard, then:
 
-You will see `bot is running!` in your terminal once it successfully connects.
+1. `npm install`
+2. Copy `.env.example` to `.env` and drop your two tokens in
+3. `npm start`
 
-## How it works
+When it connects you'll see `bot is running!` printed in the terminal.
 
-The bot uses Slack's Bolt SDK configured in Socket Mode, which means Slack pushes events directly over a WebSocket connection without needing a public IP. When a slash command triggers, the bot acknowledges the request (`ack()`), calls the corresponding API using `axios`, and replies back to the channel with `respond()`.
+## Some notes
+
+- It uses Slack's Bolt SDK in Socket Mode, so Slack pushes events to the bot over a websocket. That means no public server, no ngrok, nothing — it just runs on a laptop.
+- Every command has to call `ack()` quickly or Slack gives up on the request and shows a timeout error. That bit me on the first version.
+- If a third-party API is down the bot replies with a short "couldn't fetch" message instead of crashing.

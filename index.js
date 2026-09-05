@@ -9,7 +9,7 @@ const app = new App({
   socketMode: true
 });
 
-app.command("/bot_name-catfact", async ({ ack, respond }) => {
+app.command("/slk-catfact", async ({ ack, respond }) => {
   await ack();
 
   try {
@@ -20,7 +20,7 @@ app.command("/bot_name-catfact", async ({ ack, respond }) => {
   }
 });
 
-app.command("/bot_name-joke", async ({ ack, respond }) => {
+app.command("/slk-joke", async ({ ack, respond }) => {
   await ack();
 
   try {
@@ -36,15 +36,15 @@ ${response.data.punchline}`
   }
 });
 
-app.command("/bot_name-help", async ({ ack, respond }) => {
+app.command("/slk-help", async ({ ack, respond }) => {
   await ack();
   await respond({
     text:
 `Available Commands:
-/bot_name-ping (or /slk) - Check bot latency
-/bot_name-catfact - Get a cat fact
-/bot_name-joke - Get a random joke
-/bot_name-help - List available commands`
+/slk-ping (or /slk) - Check bot latency
+/slk-catfact - Get a cat fact
+/slk-joke - Get a random joke
+/slk-help - List available commands`
   });
 });
 
@@ -56,7 +56,7 @@ const handlePing = async ({ ack, respond }) => {
 };
 
 app.command("/slk", handlePing);
-app.command("/bot_name-ping", handlePing);
+app.command("/slk-ping", handlePing);
 
 (async () => {
   await app.start();
