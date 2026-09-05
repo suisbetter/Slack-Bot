@@ -1,9 +1,6 @@
 # My First Slack Bot
 
-<!--
-TODO: project banner here. Replace the line below with a screenshot of your bot running in Slack, e.g.
 ![bot answering a command](assets/banner.png)
--->
 
 A Slack bot I made while learning Node.js, and my first Hack Club project. Before this I'd only followed tutorials, so this is the first thing I got genuinely working in a real workspace.
 
@@ -18,7 +15,7 @@ The bot listens for a few slash commands in any channel where it's been added:
 
 ## Try it
 
-The bot is running 24/7 in my workspace. If you're in it, just type one of the commands above in the demo channel.
+The bot is running 24/7 in the Hack Club workspace. Open the **#bot-spam** channel (it's public) and type any of the commands above, for example `/slk-catfact`.
 
 ## How to run it yourself
 
